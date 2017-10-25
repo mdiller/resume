@@ -1,0 +1,36 @@
+:root {
+	--dark-background-color: #23272A;
+	--background-color: #2C2F33;
+	--text-color: #FFFFFF;
+	--itemtitle-color: #27bbf1;
+}
+
+body {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	font-size: 16px;
+	font-family: "Roboto", sans-serif;
+}
+
+#header {
+	padding: 25px;
+	text-align: center;
+	font-size: 400%;
+}
+
+#main-content {
+	margin: auto;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: var(--dark-background-color);
+	max-width: 700px;
+}
+
+.title {
+	color: var(--itemtitle-color);
+	font-size: 20px;
+}
+
+.title a {
+	color: var(--itemtitle-color);
+}

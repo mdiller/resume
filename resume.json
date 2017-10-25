@@ -1,0 +1,82 @@
+{
+	"experience": [
+		{
+			"company": "Steelcase",
+			"location": "Portland, Oregon",
+			"date_start": "July 2016",
+			"date_end": "December 2016",
+			"bullets": [
+				"Developed modular firmware testing system",
+				[
+					"Written in C#.NET and C",
+					"Makes use of the HIL(Hardware in the Loop) technique",
+					"Built to be able to test a variety of different devices"
+				],
+				"Participated in meetings, reviews, and planning sessions"
+			],
+			"description": "I developed a customizable firmware testing system which took advantage of the HIL (Hardware In The Loop) technique, and was comprised of an emulator and a controller. The controller was written in C#.NET and communicated with the emulator via a CAN serial bus, using a custom protocol. The emulator was written in C, and was responsible for emulating various configurable inputs and outputs for the device under test. I gained incredible experience, worked with great people, and very much enjoyed working in a friendly and open work environment."
+		},
+		{
+			"company": "Biotronik / MSEI",
+			"location": "Lake Oswego, Oregon",
+			"date_start": "March 2015",
+			"date_end": "September 2015",
+			"bullets": [
+				"Worked on a compilation of project-management tools used by developers",
+				[
+					"Written in C#.NET with a UI implemented in WPF",
+					"Reworked the test management system",
+					"Recreated the review management system"
+				],
+				"Collaborated with the users of the system in meetings and discussions"
+			],
+			"description": "I was working with the SEMD-IV team, and worked on a compilation of tools used during their development cycle. This involved a test management system, a review management system, and an application that ties these types of systems together. The code was written in C# .NET with a UI implemented using WPF. The back-end communication and the server involved HTTP, SQL Server, and ADO.NET Entity framework. It was an extremely rewarding and educational experience in a professional environment with very helpful people."
+		},
+		{
+			"company": "Metratek",
+			"location": "Beaverton, Oregon",
+			"date_start": "June 2014",
+			"date_end": "September 2014",
+			"bullets": [
+				"Worked on an automated testing program for testing an ECG unit written in C#",
+				"Ported code from a VB .NET project to a new C# project",
+				"Participated in project meetings and code reviews"
+			],
+			"description": "I was assigned to Welch Allyn, where I developed code to run production tests on a new ECG Unit. The code was written in a C# .NET environment, and we used Team Foundation Server for version control. This code communicates with several different instruments over USB, GPIB and Ethernet. I took part in various code reviews and planning meetings, and created unit tests and descriptions for each part of the test code I wrote."
+		},
+		{
+			"company": "Metratek",
+			"location": "Portland, Oregon",
+			"date_start": "2012",
+			"date_end": "2013",
+			"bullets": [
+				"Developed a SQL database based search application extension that navigated through a directory of files using the data contained in the files.",
+				"This was an extension to an application written in Visual Basic .NET"
+			],
+			"description": "I worked on an application for a company called Radar Engineers. What I created was an extension to an application which was able to search through a directory of files based on the data contained in those files. To do this efficiently, I created an SQL database which monitored the files and mirrored the appropriate data in a way that was easy to search through."
+		}
+	],
+	"projects": [
+		{
+			"title": "MangoByte",
+			"github": "https://github.com/mdiller/mangobyte",
+			"description": "Mangobyte is a bot which connects to an application called Discord. If you are familiar with Slack, Discord is a bit like Slack but with a focus on voice channels. Mangobyte can connect to voice channels, act as a sound board, announce when people are joining/leaving the channel, get information about recently played matches of Dota 2, generate a GIF from the json blob of a dota match, and much more. Working on MangoByte has given me a deep understanding of python and an appreciation for the importance of elegance in design when interacting with a large amount of users."
+		},
+		{
+			"title": "Dotabase",
+			"github": "https://github.com/mdiller/dotabase",
+			"description": "Dotabase is an SQLite database built from the data files of a game called Dota 2. It provides a way to get information about the game and all of its various components. This project is composed of the actual Dotabase repository, and the Dotabase Builder project, which builds the database from the game files. As there was quite a bit of heavy data handling involved in this project, I learned about how to handle large amounts of data and format it in a way that was more accessible for applications."
+		},
+		{
+			"title": "Dotabase (Website)",
+			"github": "https://github.com/mdiller/dotabase",
+			"link": "https://dotabase.dillerm.io",
+			"description": "After developing Dotabase, I decided to create a website which would be able to showcase what you can do with all that information. The result is a website that showcases some of the features of Dotabase, and was my first endeavor into the world of the web."
+		},
+		{
+			"title": "OpenDota",
+			"github": "https://github.com/odota/ui",
+			"description": "OpenDota is an open source organization which I have contributed to on several occasions. It's main goal is to provide open source information about the game Dota 2. One of the ways I have contributed is by adding features to the part of the site that shows information about particular matches of Dota 2 games. My most notable contribution is probably the addition of a 'Story' tab, which creates a story of the events that occured during that match. Because the site is built to support multiple languages, the story is built using templates which can be defined per-language, allowing for grammatically correct stories in other languages."
+		}
+	]
+}
