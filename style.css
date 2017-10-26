@@ -1,29 +1,56 @@
 :root {
 	--dark-background-color: #23272A;
 	--background-color: #2C2F33;
+	--header-color: #27bbf1;
 	--text-color: #FFFFFF;
 	--itemtitle-color: #27bbf1;
+	--light-text-color: #000000;
+}
+
+html, body {
+	height: 100%;
 }
 
 body {
+	display: flex;
+}
+
+#document {
+	font-family: "Roboto", sans-serif;
+	font-weight: bold;
 	background-color: var(--background-color);
 	color: var(--text-color);
-	font-size: 16px;
-	font-family: "Roboto", sans-serif;
+	max-width: 1015px;
+	max-height: 1295px;
+	margin: auto;
+	flex: 1;
+	height: 100%;
 }
 
 #header {
-	padding: 25px;
+	padding: 50px;
 	text-align: center;
-	font-size: 400%;
+	font-size: 500%;
+	background-color: var(--header-color);
+	color: var(--background-color);
+}
+
+#main-container {
+	height: 100%;
+}
+
+#sidebar {
+	float: left;
+	width: 30%;
+	min-height: 100%;
 }
 
 #main-content {
-	margin: auto;
-	padding: 20px;
-	border-radius: 10px;
-	background-color: var(--dark-background-color);
-	max-width: 700px;
+	float: right;
+	width: 70%;
+	background-color: white;
+	min-height: 100%;
+	color: var(--light-text-color);
 }
 
 .title {
