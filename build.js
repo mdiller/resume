@@ -1,4 +1,5 @@
 var fs = require("fs");
+var path = require("path")
 var child_process = require("child_process");
 
 var config_file = "config.json"
@@ -16,6 +17,21 @@ if (!fs.existsSync(config.build_dir)) {
 	fs.mkdirSync(config.build_dir);
 }
 
+var copyRecursive = function(src, dest) {
+	if (fs.existsSync(src) && fs.statSync(src).isDirectory()) {
+		if (!fs.existsSync(dest)) {
+			fs.mkdirSync(dest);
+		}
+		fs.readdirSync(src).forEach(child => {
+			copyRecursive(
+				path.join(src, child), 
+				path.join(dest, child));
+		});
+	}
+	else {
+		fs.createReadStream(src).pipe(fs.createWriteStream(dest));
+	}
+};
 
 
 function fixCSS(text) {
@@ -41,7 +57,7 @@ function fixCSS(text) {
 
 function jobToHTML(job) {
 	return `
-		<section class="job">
+		<section>
 			<h3>${job.company}</h3>
 			<p>
 				${job.description}
@@ -51,7 +67,7 @@ function jobToHTML(job) {
 
 function projectToHTML(project) {
 	return `
-		<section class="project">
+		<section>
 			<h3>
 				<a href=${project.github}>
 					${project.title}
@@ -60,6 +76,16 @@ function projectToHTML(project) {
 			<p>
 				${project.description}
 			</p>
+		</section>`;
+}
+
+function iconLinkToHTML(icon_link) {
+	return `
+		<section>
+			<img class="icon" src="images/${icon_link.icon}">
+			<a href="${icon_link.link}">
+				${icon_link.text}
+			</a>
 		</section>`;
 }
 
@@ -108,20 +134,33 @@ function addProjects(text, projects, config) {
 	return text.replace("<!-- projects -->", projects_text);
 }
 
+function addIconLinks(text, icon_links) {
+	icon_links_text = "";
+	icon_links.forEach(icon_link => {
+		icon_links_text += iconLinkToHTML(icon_link)
+	});
+	return text.replace("<!-- icon_links -->", icon_links_text);
+}
+
 // Load resume json data
 var resume_json = JSON.parse(fs.readFileSync("resume.json", "utf8"));
 
 // Copy over all relevant files
+
+// index.html
 var html = fs.readFileSync("index.html", "utf8");
 html = addExperience(html, resume_json.experience, config);
 html = addProjects(html, resume_json.projects, config);
+html = addIconLinks(html, resume_json.icon_links)
 fs.writeFileSync(`${config.build_dir}/index.html`, html);
 
-
+// style.css
 var css = fs.readFileSync("style.css", "utf8");
 css = fixCSS(css);
 fs.writeFileSync(`${config.build_dir}/style.css`, css);
 
+// Image directory
+copyRecursive("images", `${config.build_dir}/images`);
 
 // Build the html and css as a pdf
 child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --page-width 8.5in --page-height 11in ${config.build_dir}/index.html ${config.build_dir}/resume.pdf`, (err, stdout, stderr) => {

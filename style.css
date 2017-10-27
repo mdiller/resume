@@ -3,6 +3,7 @@
 	--background-color: #2C2F33;
 	--header-color: #27bbf1;
 	--text-color: #FFFFFF;
+	--link-color: #AAAAAA;
 	--section-background-color: #FFFFFF;
 	--section-color: #000000;
 	--section-title-color: #27bbf1;
@@ -40,6 +41,10 @@ html, body {
 	width: 30%;
 }
 
+#sidebar > section {
+	padding: 25px;
+}
+
 #main-content {
 	float: right;
 	width: 70%;
@@ -54,6 +59,27 @@ html, body {
 }
 #main-content > section > section {
 	margin-left: 10px;
+}
+
+#icon-links > section {
+	margin-left: 15px;
+	margin-bottom: 8px;
+}
+
+#icon-links > section a {
+	vertical-align: middle;
+	line-height: 24px;
+}
+
+#icon-links > section img {
+	vertical-align: middle;
+	height: 24px;
+	width: 24px;
+	margin-right: 8px;
+}
+
+a {
+	color: var(--link-color);
 }
 
 h2, h3, h4 {

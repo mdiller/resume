@@ -1,4 +1,21 @@
 {
+	"icon_links": [
+		{
+			"text": "@mdiller",
+			"link": "https://github.com/mdiller",
+			"icon": "github.png"
+		},
+		{
+			"text": "booleanhorn@gmail.com",
+			"link": "mailto:booleanhorn@gmail.com",
+			"icon": "email.png"
+		},
+		{
+			"text": "Malcolm Diller",
+			"link": "https://www.linkedin.com/in/malcolm-diller-28b040a5/",
+			"icon": "linkedin.png"
+		}
+	],
 	"experience": [
 		{
 			"company": "Steelcase",
