@@ -33,7 +33,7 @@
 			"description": "I was working with the SEMD-IV team, and worked on a compilation of tools used during their development cycle. This involved a test management system, a review management system, and an application that ties these types of systems together. The code was written in C# .NET with a UI implemented using WPF. The back-end communication and the server involved HTTP, SQL Server, and ADO.NET Entity framework. It was an extremely rewarding and educational experience in a professional environment with very helpful people."
 		},
 		{
-			"company": "Metratek",
+			"company": "Metratek (Welch Allyn)",
 			"location": "Beaverton, Oregon",
 			"date_start": "June 2014",
 			"date_end": "September 2014",
@@ -45,7 +45,7 @@
 			"description": "I was assigned to Welch Allyn, where I developed code to run production tests on a new ECG Unit. The code was written in a C# .NET environment, and we used Team Foundation Server for version control. This code communicates with several different instruments over USB, GPIB and Ethernet. I took part in various code reviews and planning meetings, and created unit tests and descriptions for each part of the test code I wrote."
 		},
 		{
-			"company": "Metratek",
+			"company": "Metratek (Radar Engineers)",
 			"location": "Portland, Oregon",
 			"date_start": "2012",
 			"date_end": "2013",
