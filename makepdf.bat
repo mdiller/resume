@@ -1,0 +1,1 @@
+wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --page-width 8.5in --page-height 11in build/index.html build/resume.pdf
