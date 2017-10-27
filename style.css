@@ -3,7 +3,9 @@
 	--background-color: #2C2F33;
 	--header-color: #27bbf1;
 	--text-color: #FFFFFF;
-	--itemtitle-color: #27bbf1;
+	--section-background-color: #FFFFFF;
+	--section-color: #000000;
+	--section-title-color: #27bbf1;
 	--document-width: 1020px;
 	--document-height: 1295px;
 	--header-height: 200px;
@@ -18,7 +20,6 @@ html, body {
 
 #document {
 	font-family: "Roboto", sans-serif;
-	font-weight: bold;
 	max-width: var(--document-width);
 	max-height: var(--document-height);
 	height: 100%;
@@ -44,11 +45,21 @@ html, body {
 	width: 70%;
 }
 
-.title {
-	color: var(--itemtitle-color);
-	font-size: 20px;
+#main-content > section {
+	margin: 15px;
+	margin-bottom: 0;
+	padding: 25px;
+	background-color: var(--section-background-color);
+	color: var(--section-color);
+}
+#main-content > section > section {
+	margin-left: 10px;
 }
 
-.title a {
-	color: var(--itemtitle-color);
+h2, h3, h4 {
+	color: var(--section-title-color);
+}
+
+h2 a, h3 a, h4 a {
+	color: var(--section-title-color);
 }
