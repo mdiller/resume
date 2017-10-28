@@ -1,4 +1,10 @@
 {
+	"education": {
+		"title": "Oregon State University",
+		"date_start": "2013",
+		"date_end": "Present",
+		"text": "Graduating December 8th with a bachelor's in Computer Science"
+	},
 	"languages": {
 		"proficient": [
 			"Python",
@@ -27,6 +33,11 @@
 			"text": "Malcolm Diller",
 			"link": "https://www.linkedin.com/in/malcolm-diller-28b040a5/",
 			"icon": "linkedin.png"
+		},
+		{
+			"text": "1623A 15th Ave SE Albany, Oregon 97322",
+			"link": null,
+			"icon": "map_pin.png"
 		}
 	],
 	"experience": [
@@ -90,7 +101,31 @@
 		{
 			"title": "MangoByte",
 			"github": "https://github.com/mdiller/mangobyte",
+			"bullets": [
+				"A chat bot for Discord written in Python",
+				"53 unique commands, such as:",
+				[
+					"Create discord embed objects to show usage data",
+					"Link users to their Steam accounts",
+					"Use PIL to create a GIF from the JSON data of a Dota 2 match"
+				],
+				"Connects to voice channels to act as a soundboard, introduce people joining the channel, and for text-to-speech"
+			],
 			"description": "Mangobyte is a bot which connects to an application called Discord. If you are familiar with Slack, Discord is a bit like Slack but with a focus on voice channels. Mangobyte can connect to voice channels, act as a sound board, announce when people are joining/leaving the channel, get information about recently played matches of Dota 2, generate a GIF from the json blob of a dota match, and much more. Working on MangoByte has given me a deep understanding of python and an appreciation for the importance of elegance in design when interacting with a large amount of users."
+		},
+		{
+			"title": "OpenDota",
+			"github": "https://github.com/odota/ui",
+			"bullets": [
+				"A Community-maintained open source Dota 2 data platform I have contributed to.",
+				"The UI for their website is built using React.js",
+				"Created a \"Story\" tab on the page which displays information about Dota 2 matches",
+				[
+					"Converts the JSON data from the match into a readable \"story\"",
+					"Created using templates for each part of the story, so all languages are supported with correct grammar and sentence structure"
+				]
+			],
+			"description": "OpenDota is an open source organization which I have contributed to on several occasions. It's main goal is to provide open source information about the game Dota 2. One of the ways I have contributed is by adding features to the part of the site that shows information about particular matches of Dota 2 games. My most notable contribution is probably the addition of a 'Story' tab, which creates a story of the events that occured during that match. Because the site is built to support multiple languages, the story is built using templates which can be defined per-language, allowing for grammatically correct stories in other languages."
 		},
 		{
 			"title": "Dotabase",
@@ -102,11 +137,6 @@
 			"github": "https://github.com/mdiller/dotabase",
 			"link": "https://dotabase.dillerm.io",
 			"description": "After developing Dotabase, I decided to create a website which would be able to showcase what you can do with all that information. The result is a website that showcases some of the features of Dotabase, and was my first endeavor into the world of the web."
-		},
-		{
-			"title": "OpenDota",
-			"github": "https://github.com/odota/ui",
-			"description": "OpenDota is an open source organization which I have contributed to on several occasions. It's main goal is to provide open source information about the game Dota 2. One of the ways I have contributed is by adding features to the part of the site that shows information about particular matches of Dota 2 games. My most notable contribution is probably the addition of a 'Story' tab, which creates a story of the events that occured during that match. Because the site is built to support multiple languages, the story is built using templates which can be defined per-language, allowing for grammatically correct stories in other languages."
 		}
 	]
 }

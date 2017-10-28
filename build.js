@@ -85,20 +85,21 @@ function projectToHTML(project) {
 					${project.title}
 				</a>
 			</h3>
-			<p>
-				${project.description}
-			</p>
+			${jsonToUl(project.bullets)}
 		</section>`;
 }
 
 function iconLinkToHTML(icon_link) {
+	var text = icon_link.link ? `<a href="${icon_link.link}">${icon_link.text}</a>` : icon_link.text;
 	return `
-		<section>
-			<img class="icon" src="images/${icon_link.icon}">
-			<a href="${icon_link.link}">
-				${icon_link.text}
-			</a>
-		</section>`;
+		<tr>
+			<td>
+				<img class="icon" src="images/${icon_link.icon}">
+			</td>
+			<td>
+				${text}
+			</td>
+		</tr>`;
 }
 
 
@@ -148,10 +149,11 @@ function addProjects(text, projects, config) {
 }
 
 function addIconLinks(text, icon_links) {
-	icon_links_text = "";
+	icon_links_text = "<table>";
 	icon_links.forEach(icon_link => {
 		icon_links_text += iconLinkToHTML(icon_link)
 	});
+	icon_links_text += "</table>"
 	return text.replace("<!-- icon_links -->", icon_links_text);
 }
 
@@ -168,6 +170,15 @@ function addLanguages(text, languages) {
 	return text.replace("<!-- languages -->", lang_text);
 }
 
+function addEducation(text, education) {
+	var education_text = `
+		<section>
+			<h4>${education.title}</h4>
+			${education.text}
+		</section>`;
+	return text.replace("<!-- education -->", education_text);
+}
+
 // Load resume json data
 var resume_json = JSON.parse(fs.readFileSync("resume.json", "utf8"));
 
@@ -179,6 +190,7 @@ html = addExperience(html, resume_json.experience, config);
 html = addProjects(html, resume_json.projects, config);
 html = addIconLinks(html, resume_json.icon_links);
 html = addLanguages(html, resume_json.languages);
+html = addEducation(html, resume_json.education);
 fs.writeFileSync(`${config.build_dir}/index.html`, html);
 
 // style.css

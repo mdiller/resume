@@ -43,6 +43,7 @@ html, body {
 
 #sidebar > section {
 	padding: 25px;
+	padding-bottom: 0;
 }
 
 #sidebar > section > section {
@@ -65,21 +66,31 @@ html, body {
 	margin-left: 10px;
 }
 
-#icon-links > section {
-	margin-left: 15px;
-	margin-bottom: 8px;
+#icon-links table {
+	margin-top: 15px;
 }
 
-#icon-links > section a {
+#icon-links td {
+	vertical-align: top;
+	color: #AAAAAA;
+}
+
+#icon-links a {
 	vertical-align: middle;
 	line-height: 24px;
 }
 
-#icon-links > section img {
-	vertical-align: middle;
+#icon-links img {
+	vertical-align: top;
 	height: 24px;
 	width: 24px;
 	margin-right: 8px;
+	margin-left: 15px;
+	margin-bottom: 5px;
+}
+
+#education h4 {
+	color: #dc4405;
 }
 
 a {
@@ -87,14 +98,18 @@ a {
 }
 
 ul {
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
 
 h2, h3, h4 {
 	color: var(--section-title-color);
 	margin-top: 20px;
 	margin-bottom: 10px;
+}
+
+h2 {
+	margin: 0;
 }
 
 h2 a, h3 a, h4 a {
