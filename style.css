@@ -93,6 +93,12 @@ html, body {
 	color: #dc4405;
 }
 
+#references {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+}
+
 a {
 	color: var(--link-color);
 }
