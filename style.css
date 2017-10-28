@@ -45,6 +45,10 @@ html, body {
 	padding: 25px;
 }
 
+#sidebar > section > section {
+	margin-left: 10px;
+}
+
 #main-content {
 	float: right;
 	width: 70%;
@@ -82,8 +86,15 @@ a {
 	color: var(--link-color);
 }
 
+ul {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
 h2, h3, h4 {
 	color: var(--section-title-color);
+	margin-top: 20px;
+	margin-bottom: 10px;
 }
 
 h2 a, h3 a, h4 a {

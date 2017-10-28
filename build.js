@@ -101,6 +101,7 @@ function iconLinkToHTML(icon_link) {
 		</section>`;
 }
 
+
 // Just inserting these as strings because it isn't worth loading js-dom
 function addExperience(text, jobs, config) {
 	jobs_text = "";
@@ -154,6 +155,19 @@ function addIconLinks(text, icon_links) {
 	return text.replace("<!-- icon_links -->", icon_links_text);
 }
 
+function addLanguages(text, languages) {
+	var lang_text = `
+		<section>
+			<h3>Proficient</h3>
+			${jsonToUl(languages.proficient)}
+		</section>
+		<section>
+			<h3>Familiar</h3>
+			${jsonToUl(languages.familiar)}
+		</section>`;
+	return text.replace("<!-- languages -->", lang_text);
+}
+
 // Load resume json data
 var resume_json = JSON.parse(fs.readFileSync("resume.json", "utf8"));
 
@@ -163,7 +177,8 @@ var resume_json = JSON.parse(fs.readFileSync("resume.json", "utf8"));
 var html = fs.readFileSync("index.html", "utf8");
 html = addExperience(html, resume_json.experience, config);
 html = addProjects(html, resume_json.projects, config);
-html = addIconLinks(html, resume_json.icon_links)
+html = addIconLinks(html, resume_json.icon_links);
+html = addLanguages(html, resume_json.languages);
 fs.writeFileSync(`${config.build_dir}/index.html`, html);
 
 // style.css

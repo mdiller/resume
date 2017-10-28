@@ -1,4 +1,17 @@
 {
+	"languages": {
+		"proficient": [
+			"Python",
+			"C#",
+			"JavaScript",
+			"SQL",
+			"HTML/CSS"
+		],
+		"familiar": [
+			"C++",
+			"C"
+		]
+	},
 	"icon_links": [
 		{
 			"text": "@mdiller",
