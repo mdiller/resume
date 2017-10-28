@@ -17,7 +17,21 @@ if (!fs.existsSync(config.build_dir)) {
 	fs.mkdirSync(config.build_dir);
 }
 
-var copyRecursive = function(src, dest) {
+function jsonToUl(data) {
+	var lines = []
+	for(var i = 0; i < data.length; i++) {
+		if ((i + 1) < data.length && typeof data[i + 1] !== "string"){
+			lines.push(`<li>${data[i]}\n${jsonToUl(data[i + 1])}</li>`);
+			i += 1;
+		}
+		else {
+			lines.push(`<li>${data[i]}</li>`);
+		}
+	}
+	return `<ul>\n${lines.join("\n")}\n</ul>`;
+}
+
+function copyRecursive(src, dest) {
 	if (fs.existsSync(src) && fs.statSync(src).isDirectory()) {
 		if (!fs.existsSync(dest)) {
 			fs.mkdirSync(dest);
@@ -59,9 +73,7 @@ function jobToHTML(job) {
 	return `
 		<section>
 			<h3>${job.company}</h3>
-			<p>
-				${job.description}
-			</p>
+			${jsonToUl(job.bullets)}
 		</section>`;
 }
 
