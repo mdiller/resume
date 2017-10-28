@@ -72,7 +72,12 @@ function fixCSS(text) {
 function jobToHTML(job) {
 	return `
 		<section>
-			<h3>${job.company}</h3>
+			<h3>
+				${job.company}
+				<span class="location-date">
+					${job.location} (${job.date_start} - ${job.date_end})
+				</span>
+			</h3>
 			${jsonToUl(job.bullets)}
 		</section>`;
 }

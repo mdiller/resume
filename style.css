@@ -68,6 +68,11 @@ html, body {
 	margin-left: 10px;
 }
 
+.location-date {
+	color: var(--section-color);
+	font-size: 14px;
+}
+
 #icon-links table {
 	margin-top: 15px;
 }

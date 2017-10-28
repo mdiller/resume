@@ -94,8 +94,8 @@
 		{
 			"company": "Metratek (Radar Engineers)",
 			"location": "Portland, Oregon",
-			"date_start": "2012",
-			"date_end": "2013",
+			"date_start": "June 2012",
+			"date_end": "September 2012",
 			"bullets": [
 				"Developed a SQL database based search application extension that navigated through a directory of files using the data contained in the files.",
 				"This was an extension to an application written in Visual Basic .NET"
