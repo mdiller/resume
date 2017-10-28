@@ -179,6 +179,10 @@ function addEducation(text, education) {
 	return text.replace("<!-- education -->", education_text);
 }
 
+function addAboutMe(text, about_me) {
+	return text.replace("<!-- about_me -->", `<p>${about_me}</p>`);
+}
+
 // Load resume json data
 var resume_json = JSON.parse(fs.readFileSync("resume.json", "utf8"));
 
@@ -191,6 +195,7 @@ html = addProjects(html, resume_json.projects, config);
 html = addIconLinks(html, resume_json.icon_links);
 html = addLanguages(html, resume_json.languages);
 html = addEducation(html, resume_json.education);
+html = addAboutMe(html, resume_json.about_me);
 fs.writeFileSync(`${config.build_dir}/index.html`, html);
 
 // style.css
