@@ -9,7 +9,7 @@
 	--section-title-color: #27bbf1;
 	--document-width: 1020px;
 	--document-height: 1295px;
-	--header-height: 200px;
+	--header-height: 175px;
 }
 
 html, body {
@@ -61,7 +61,9 @@ html, body {
 	padding: 25px;
 	background-color: var(--section-background-color);
 	color: var(--section-color);
+	box-shadow: 0 0 10px 0 black;
 }
+
 #main-content > section > section {
 	margin-left: 10px;
 }
