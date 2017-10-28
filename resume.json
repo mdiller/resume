@@ -4,7 +4,7 @@
 		"title": "Oregon State University",
 		"date_start": "2013",
 		"date_end": "Present",
-		"text": "Graduating December 8th with a bachelor's in Computer Science"
+		"text": "Graduating December 8th, 2017 with a bachelor's in Computer Science"
 	},
 	"languages": {
 		"proficient": [
@@ -24,6 +24,11 @@
 			"text": "@mdiller",
 			"link": "https://github.com/mdiller",
 			"icon": "github.png"
+		},
+		{
+			"text": "(503)-686-8379",
+			"link": "tel://1-503-686-8379",
+			"icon": "phone.png"
 		},
 		{
 			"text": "booleanhorn@gmail.com",
@@ -103,8 +108,8 @@
 			"title": "MangoByte",
 			"github": "https://github.com/mdiller/mangobyte",
 			"bullets": [
-				"A chat bot for Discord written in Python",
-				"53 unique commands, such as:",
+				"A bot written in Python for a voice and chat application called Discord",
+				"53 unique commands, including:",
 				[
 					"Create discord embed objects to show usage data",
 					"Link users to their Steam accounts",
