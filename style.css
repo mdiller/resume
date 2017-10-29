@@ -9,7 +9,7 @@
 	--section-title-color: #2e9cd9;
 	--document-width: 1020px;
 	--document-height: 1295px;
-	--header-height: 175px;
+	--header-height: 110px;
 }
 
 html, body {
@@ -31,9 +31,17 @@ html, body {
 	height: var(--header-height);
 	line-height: var(--header-height);
 	text-align: center;
-	font-size: 500%;
 	background-color: var(--header-color);
 	color: var(--background-color);
+}
+
+h1 {
+	font-size: 400%;
+	margin: 0;
+}
+
+section > section {
+	margin-left: 15px;
 }
 
 #sidebar {
@@ -46,17 +54,13 @@ html, body {
 	padding-bottom: 0;
 }
 
-#sidebar > section > section {
-	margin-left: 10px;
-}
-
 #main-content {
 	float: right;
 	width: 70%;
 }
 
 #main-content > section {
-	margin: 15px;
+	margin: 10px;
 	margin-bottom: 0;
 	padding: 25px;
 	background-color: var(--section-background-color);
@@ -64,13 +68,13 @@ html, body {
 	box-shadow: 0 0 10px 0 black;
 }
 
-#main-content > section > section {
-	margin-left: 10px;
-}
-
 .location-date {
 	color: var(--section-color);
 	font-size: 14px;
+}
+
+#about-me h2 {
+	margin-bottom: 10px;
 }
 
 #icon-links table {
@@ -110,9 +114,16 @@ a {
 	color: var(--link-color);
 }
 
+section ul, 
+section p,
+section table {
+	margin-left: 15px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
 ul {
-	margin-top: 4px;
-	margin-bottom: 4px;
+	padding-left: 25px;
 }
 
 h2, h3, h4 {

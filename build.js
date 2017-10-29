@@ -179,7 +179,7 @@ function addEducation(text, education) {
 	var education_text = `
 		<section>
 			<h4>${education.title}</h4>
-			${education.text}
+			<p>${education.text}</p>
 		</section>`;
 	return text.replace("<!-- education -->", education_text);
 }
