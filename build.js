@@ -17,6 +17,11 @@ if (!fs.existsSync(config.build_dir)) {
 	fs.mkdirSync(config.build_dir);
 }
 
+function textToHTML(text) {
+	text = text.replace(/\n/g, "<br>");
+	return text;
+}
+
 function jsonToUl(data) {
 	var lines = []
 	for(var i = 0; i < data.length; i++) {
@@ -98,7 +103,7 @@ function projectToHTML(project) {
 }
 
 function iconLinkToHTML(icon_link) {
-	var text = icon_link.link ? `<a href="${icon_link.link}">${icon_link.text}</a>` : icon_link.text;
+	var text = icon_link.link ? `<a href="${icon_link.link}">${icon_link.text}</a>` : textToHTML(icon_link.text);
 	return `
 		<tr>
 			<td>
@@ -182,7 +187,7 @@ function addEducation(text, education) {
 	var education_text = `
 		<section>
 			<h4>${education.title}</h4>
-			<p>${education.text}</p>
+			<p>${textToHTML(education.text)}</p>
 		</section>`;
 	return text.replace("<!-- education -->", education_text);
 }

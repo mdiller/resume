@@ -1,10 +1,10 @@
 {
-	"about_me": "I enjoy working on interesting problems, and creating elegant solutions for them. As a fast learner, I take it upon myself to learn new concepts and work on personal projects in order to expand my knowledge.",
+	"about_me": "I enjoy working on complex problems and creating elegant solutions for them. Not only am I a fast learner, I take it upon myself to learn new concepts and work on personal projects in order to expand my knowledge.",
 	"education": {
 		"title": "Oregon State University",
 		"date_start": "2013",
 		"date_end": "Present",
-		"text": "Graduating December 8th, 2017 with a bachelor's in Computer Science"
+		"text": "B.S. in Computer Science\nGraduating December 8th, 2017"
 	},
 	"languages": {
 		"proficient": [
@@ -41,7 +41,7 @@
 			"icon": "linkedin.png"
 		},
 		{
-			"text": "1623A 15th Ave SE Albany, Oregon 97322",
+			"text": "1623A 15th Ave SE\nAlbany, Oregon\n97322",
 			"link": null,
 			"icon": "map_pin.png"
 		}
@@ -80,7 +80,7 @@
 			"description": "I was working with the SEMD-IV team, and worked on a compilation of tools used during their development cycle. This involved a test management system, a review management system, and an application that ties these types of systems together. The code was written in C# .NET with a UI implemented using WPF. The back-end communication and the server involved HTTP, SQL Server, and ADO.NET Entity framework. It was an extremely rewarding and educational experience in a professional environment with very helpful people."
 		},
 		{
-			"company": "Metratek (Welch Allyn)",
+			"company": "Metratek (for Welch Allyn)",
 			"location": "Beaverton, Oregon",
 			"date_start": "June 2014",
 			"date_end": "September 2014",
@@ -92,13 +92,14 @@
 			"description": "I was assigned to Welch Allyn, where I developed code to run production tests on a new ECG Unit. The code was written in a C# .NET environment, and we used Team Foundation Server for version control. This code communicates with several different instruments over USB, GPIB and Ethernet. I took part in various code reviews and planning meetings, and created unit tests and descriptions for each part of the test code I wrote."
 		},
 		{
-			"company": "Metratek (Radar Engineers)",
+			"company": "Metratek (for Radar Engineers)",
 			"location": "Portland, Oregon",
 			"date_start": "June 2012",
 			"date_end": "September 2012",
 			"bullets": [
 				"Developed a SQL database based search application extension that navigated through a directory of files using the data contained in the files",
-				"This was an extension to an application written in Visual Basic .NET"
+				"This was an extension to an application written in Visual Basic .NET",
+				"Created a system so that an embedded device would self-update from a plugged in USB drive"
 			],
 			"description": "I worked on an application for a company called Radar Engineers. What I created was an extension to an application which was able to search through a directory of files based on the data contained in those files. To do this efficiently, I created an SQL database which monitored the files and mirrored the appropriate data in a way that was easy to search through."
 		}
