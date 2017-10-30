@@ -73,6 +73,13 @@ section > section {
 	font-size: 14px;
 }
 
+.github-link {
+	float: right;
+	position: relative;
+	font-size: 14px;
+	padding: 5px;
+}
+
 #about-me h2 {
 	margin-bottom: 10px;
 }
@@ -87,6 +94,7 @@ section > section {
 }
 
 #icon-links a {
+	color: var(--link-color);
 	vertical-align: middle;
 	line-height: 24px;
 }
@@ -134,8 +142,4 @@ h2, h3, h4 {
 
 h2 {
 	margin: 0;
-}
-
-h2 a, h3 a, h4 a {
-	color: var(--section-title-color);
 }

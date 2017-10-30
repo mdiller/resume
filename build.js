@@ -86,9 +86,12 @@ function projectToHTML(project) {
 	return `
 		<section>
 			<h3>
-				<a href=${project.github}>
-					${project.title}
-				</a>
+				${project.title}
+				<span class="github-link">
+					<a href=${project.github}>
+						View Source
+					</a>
+				</span>
 			</h3>
 			${jsonToUl(project.bullets)}
 		</section>`;

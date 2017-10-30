@@ -85,7 +85,7 @@
 			"date_start": "June 2014",
 			"date_end": "September 2014",
 			"bullets": [
-				"Worked on an automated testing program for testing an ECG unit written in C#",
+				"Worked on an automated testing program for testing an ECG unit",
 				"Ported code from a VB .NET project to a new C# project",
 				"Participated in project meetings and code reviews"
 			],
@@ -97,7 +97,7 @@
 			"date_start": "June 2012",
 			"date_end": "September 2012",
 			"bullets": [
-				"Developed a SQL database based search application extension that navigated through a directory of files using the data contained in the files.",
+				"Developed a SQL database based search application extension that navigated through a directory of files using the data contained in the files",
 				"This was an extension to an application written in Visual Basic .NET"
 			],
 			"description": "I worked on an application for a company called Radar Engineers. What I created was an extension to an application which was able to search through a directory of files based on the data contained in those files. To do this efficiently, I created an SQL database which monitored the files and mirrored the appropriate data in a way that was easy to search through."
@@ -123,7 +123,7 @@
 			"title": "OpenDota",
 			"github": "https://github.com/odota/ui",
 			"bullets": [
-				"A Community-maintained open source Dota 2 data platform I have contributed to.",
+				"A Community-maintained open source Dota 2 data platform I have contributed to",
 				"The UI for their website is built using React.js",
 				"Created a \"Story\" tab on the page which displays information about Dota 2 matches",
 				[
