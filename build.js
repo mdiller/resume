@@ -88,10 +88,11 @@ function jobToHTML(job) {
 }
 
 function projectToHTML(project) {
+	var title = project.link ? `<a href="${project.link}">${project.title}</a>` : project.title;
 	return `
 		<section>
 			<h3>
-				${project.title}
+				${title}
 				<span class="github-link">
 					<a href=${project.github}>
 						View Source
