@@ -220,6 +220,10 @@ var css = fs.readFileSync("style.css", "utf8");
 css = fixCSS(css);
 fs.writeFileSync(`${config.build_dir}/style.css`, css);
 
+// resume.json
+var text = fs.readFileSync("resume.json", "utf8");
+fs.writeFileSync(`${config.build_dir}/resume.json`, text);
+
 // Image directory
 copyRecursive("images", `${config.build_dir}/images`);
 
