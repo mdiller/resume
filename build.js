@@ -228,14 +228,19 @@ fs.writeFileSync(`${config.build_dir}/resume.json`, text);
 // Image directory
 copyRecursive("images", `${config.build_dir}/images`);
 
-// Build the html and css as a pdf
-child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --page-width 8.5in --page-height 11in ${config.build_dir}/index.html ${config.build_dir}/resume.pdf`, (err, stdout, stderr) => {
-	if (err) {
-		console.log("There was a problem running wkhtmltopdf. Make sure you have it installed");
-		return;
-	}
-	if (stdout != "") {
-		console.log(stdout);
-	}
-	console.log("done!");
-});
+if (config.build_pdf == undefined || config.build_pdf) {
+	// Build the html and css as a pdf
+	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --page-width 8.5in --page-height 11in ${config.build_dir}/index.html ${config.build_dir}/resume.pdf`, (err, stdout, stderr) => {
+		if (err) {
+			console.log("There was a problem running wkhtmltopdf. Make sure you have it installed");
+			return;
+		}
+		if (stdout != "") {
+			console.log(stdout);
+		}
+		console.log("done!");
+	});
+}
+else {
+	console.log("done!")
+}
