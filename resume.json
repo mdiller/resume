@@ -137,12 +137,22 @@
 		{
 			"title": "Dotabase",
 			"github": "https://github.com/mdiller/dotabase",
+			"bullets": [
+				"Creates an SQLite database from the files of a game called Dota 2",
+				"Scrapes a wikipedia page for the text of audio clips",
+				"Built to be installed as a python library via pip"
+			],
 			"description": "Dotabase is an SQLite database built from the data files of a game called Dota 2. It provides a way to get information about the game and all of its various components. This project is composed of the actual Dotabase repository, and the Dotabase Builder project, which builds the database from the game files. As there was quite a bit of heavy data handling involved in this project, I learned about how to handle large amounts of data and format it in a way that was more accessible for applications."
 		},
 		{
 			"title": "Dotabase (Website)",
 			"github": "https://github.com/mdiller/dotabase",
 			"link": "https://dotabase.dillerm.io",
+			"bullets": [
+				"A website built on dotabase, to showcase its functionality",
+				"Built using the LAMP stack, with PHP as the HTML templating framework",
+				"Implements an efficient search on dotabase's SQLite database to find Dota 2 hero responses"
+			],
 			"description": "After developing Dotabase, I decided to create a website which would be able to showcase what you can do with all that information. The result is a website that showcases some of the features of Dotabase, and was my first endeavor into the world of the web."
 		}
 	]
