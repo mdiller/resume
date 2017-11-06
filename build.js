@@ -209,6 +209,10 @@ html = addIconLinks(html, resume_json.icon_links);
 html = addLanguages(html, resume_json.languages);
 html = addEducation(html, resume_json.education);
 html = addAboutMe(html, resume_json.about_me);
+if (!config.hide_references) {
+	html = html.replace("<!-- references -->", `<span id="references">References available upon request</span>`);
+}
+
 fs.writeFileSync(`${config.build_dir}/index.html`, html);
 
 // style.css
