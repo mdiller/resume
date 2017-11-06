@@ -147,7 +147,7 @@
 		{
 			"title": "Dotabase (Website)",
 			"github": "https://github.com/mdiller/dotabase",
-			"link": "https://dotabase.dillerm.io",
+			"link": "http://dotabase.dillerm.io",
 			"bullets": [
 				"A website built on dotabase, to showcase its functionality",
 				"Built using the LAMP stack, with PHP as the HTML templating framework",
