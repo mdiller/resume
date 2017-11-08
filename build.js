@@ -5,16 +5,20 @@ var child_process = require("child_process");
 var config_file = "config.json"
 
 // Default config values
-var config = {
-	build_dir: "build"
-}
+var config = {};
 // Load config json data
 if (fs.existsSync(config_file)) {
 	Object.assign(config, JSON.parse(fs.readFileSync(config_file, "utf8")));
 }
 
-if (!fs.existsSync(config.build_dir)) {
+if (config.build_dir && !fs.existsSync(config.build_dir)) {
 	fs.mkdirSync(config.build_dir);
+}
+
+// Build to here and then copy to config.build_dir
+var build_directory = "build/";
+if (!fs.existsSync(build_directory)) {
+	fs.mkdirSync(build_directory);
 }
 
 function textToHTML(text) {
@@ -210,23 +214,30 @@ html = addIconLinks(html, resume_json.icon_links);
 html = addLanguages(html, resume_json.languages);
 html = addEducation(html, resume_json.education);
 html = addAboutMe(html, resume_json.about_me);
-fs.writeFileSync(`${config.build_dir}/resume.html`, html);
+fs.writeFileSync(`${build_directory}/resume.html`, html);
 
 // style.css
 var css = fs.readFileSync("style.css", "utf8");
 css = fixCSS(css);
-fs.writeFileSync(`${config.build_dir}/style.css`, css);
+fs.writeFileSync(`${build_directory}/style.css`, css);
 
 // resume.json
 var text = fs.readFileSync("resume.json", "utf8");
-fs.writeFileSync(`${config.build_dir}/resume.json`, text);
+fs.writeFileSync(`${build_directory}/resume.json`, text);
 
 // Image directory
-copyRecursive("images", `${config.build_dir}/images`);
+copyRecursive("images", `${build_directory}/images`);
+
+function finish_build() {
+	if (config.build_dir) {
+		copyRecursive(build_directory, config.build_dir);
+	}
+	console.log("done!");
+}
 
 if (config.build_pdf == undefined || config.build_pdf) {
 	// Build the html and css as a pdf
-	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --disable-javascript --page-width 8.5in --page-height 11in ${config.build_dir}/resume.html ${config.build_dir}/resume.pdf`, (err, stdout, stderr) => {
+	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --disable-javascript --page-width 8.5in --page-height 11in ${build_directory}/resume.html ${build_directory}/resume.pdf`, (err, stdout, stderr) => {
 		if (err) {
 			console.log("There was a problem running wkhtmltopdf. Make sure you have it installed");
 			return;
@@ -234,9 +245,9 @@ if (config.build_pdf == undefined || config.build_pdf) {
 		if (stdout != "") {
 			console.log(stdout);
 		}
-		console.log("done!");
+		finish_build();
 	});
 }
 else {
-	console.log("done!")
+	finish_build();
 }
