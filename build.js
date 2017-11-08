@@ -202,8 +202,8 @@ var resume_json = JSON.parse(fs.readFileSync("resume.json", "utf8"));
 
 // Copy over all relevant files
 
-// index.html
-var html = fs.readFileSync("index.html", "utf8");
+// resume.html
+var html = fs.readFileSync("resume.html", "utf8");
 html = addExperience(html, resume_json.experience, config);
 html = addProjects(html, resume_json.projects, config);
 html = addIconLinks(html, resume_json.icon_links);
@@ -214,7 +214,7 @@ if (!config.hide_references) {
 	html = html.replace("<!-- references -->", `<span id="references">References available upon request</span>`);
 }
 
-fs.writeFileSync(`${config.build_dir}/index.html`, html);
+fs.writeFileSync(`${config.build_dir}/resume.html`, html);
 
 // style.css
 var css = fs.readFileSync("style.css", "utf8");
@@ -230,7 +230,7 @@ copyRecursive("images", `${config.build_dir}/images`);
 
 if (config.build_pdf == undefined || config.build_pdf) {
 	// Build the html and css as a pdf
-	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --page-width 8.5in --page-height 11in ${config.build_dir}/index.html ${config.build_dir}/resume.pdf`, (err, stdout, stderr) => {
+	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --page-width 8.5in --page-height 11in ${config.build_dir}/resume.html ${config.build_dir}/resume.pdf`, (err, stdout, stderr) => {
 		if (err) {
 			console.log("There was a problem running wkhtmltopdf. Make sure you have it installed");
 			return;
