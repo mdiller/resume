@@ -210,10 +210,6 @@ html = addIconLinks(html, resume_json.icon_links);
 html = addLanguages(html, resume_json.languages);
 html = addEducation(html, resume_json.education);
 html = addAboutMe(html, resume_json.about_me);
-if (!config.hide_references) {
-	html = html.replace("<!-- references -->", `<span id="references">References available upon request</span>`);
-}
-
 fs.writeFileSync(`${config.build_dir}/resume.html`, html);
 
 // style.css
@@ -230,7 +226,7 @@ copyRecursive("images", `${config.build_dir}/images`);
 
 if (config.build_pdf == undefined || config.build_pdf) {
 	// Build the html and css as a pdf
-	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --page-width 8.5in --page-height 11in ${config.build_dir}/resume.html ${config.build_dir}/resume.pdf`, (err, stdout, stderr) => {
+	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --disable-javascript --page-width 8.5in --page-height 11in ${config.build_dir}/resume.html ${config.build_dir}/resume.pdf`, (err, stdout, stderr) => {
 		if (err) {
 			console.log("There was a problem running wkhtmltopdf. Make sure you have it installed");
 			return;
