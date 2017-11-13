@@ -21,6 +21,12 @@
 	},
 	"icon_links": [
 		{
+			"name": "website",
+			"text": "dillerm.io",
+			"link": "http://dillerm.io",
+			"icon": "globe.png"
+		},
+		{
 			"name": "github",
 			"text": "@mdiller",
 			"link": "https://github.com/mdiller",
