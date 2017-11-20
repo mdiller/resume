@@ -64,7 +64,7 @@
 			"date_start": "July 2016",
 			"date_end": "December 2016",
 			"bullets": [
-				"Developed modular firmware testing system",
+				"Developed modular firmware testing system from the ground up",
 				[
 					"Written in C#.NET and C",
 					"Makes use of the HIL(Hardware in the Loop) technique",
@@ -130,6 +130,16 @@
 				"Connects to voice channels to act as a soundboard, introduce people joining the channel, and for text-to-speech"
 			],
 			"description": "Mangobyte is a bot which connects to an application called Discord. If you are familiar with Slack, Discord is a bit like Slack but with a focus on voice channels. Mangobyte can connect to voice channels, act as a sound board, announce when people are joining/leaving the channel, get information about recently played matches of Dota 2, generate a GIF from the json blob of a dota match, and much more. Working on MangoByte has given me a deep understanding of python and an appreciation for the importance of elegance in design when interacting with a large amount of users."
+		},
+		{
+			"title": "Low-Poly Earth",
+			"github": "https://github.com/mdiller/lowpoly-earth",
+			"link": "http://dillerm.io/lowpoly-earth/",
+			"bullets": [
+				"A 3D rendering of the Earth, using a relatively small number of polygons",
+				"Rendered using THREE.js / WebGL, and made to work on mobile and desktop",
+				"Built using elevation data from the Google Maps API"
+			]
 		},
 		{
 			"title": "OpenDota",
