@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	{{{style}}}
+	<!-- Roboto Font -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+	<head>
+		<title>Malcolm Diller</title>
+	</head>
+
+	<body>
+		<div id="document">
+			<h1>Malcolm Diller</h1>
+			<h2>About Me</h2>
+			<p>{{about_me}}</p>
+			<h2>Contact Info</h2>
+			<table>
+				{{#each icon_links}}
+				<tr>
+					<td>
+						<img class="icon" src="images/{{icon}}">
+					</td>
+					<td>
+						{{{simpleLink}}}
+					</td>
+				</tr>
+				{{/each}}
+			</table>
+		
+			<h2>Languages</h2>
+			<h3>Proficient</h3>
+			{{{jsonToUl languages.proficient}}}
+			<h3>Familiar</h3>
+			{{{jsonToUl languages.familiar}}}
+		
+			<h2>Education</h2>
+			<h4>{{education.title}}</h4>
+			<p>{{{textToHTML education.text}}}</p>
+			<h2>Work Experience</h2>
+			{{#each experience}}
+				<h3>
+					{{company}}
+					<span class="location-date">
+						{{location}} ({{date_start}} - {{date_end}})
+					</span>
+				</h3>
+				{{{jsonToUl bullets}}}
+			{{/each}}
+			<h2>Personal Projects</h2>
+			{{#each projects}}
+			<section>
+				<h3>
+					{{{linkText link title}}}
+				</h3>
+				{{{jsonToUl bullets}}}
+			{{/each}}
+
+			<div>
+				References available upon request
+			</div>
+		</div>
+	</body>
+</html>
