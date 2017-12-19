@@ -21,15 +21,36 @@
 				<div id="sidebar">
 					<section id="icon-links">
 						<h2>Contact Info</h2>
-						<!-- icon_links -->
+						<table>
+							{{#each icon_links}}
+							<tr>
+								<td>
+									<img class="icon" src="images/{{icon}}">
+								</td>
+								<td>
+									{{{linkText link text}}}
+								</td>
+							</tr>
+							{{/each}}
+						</table>
 					</section>
 					<section id="languages">
 						<h2>Languages</h2>
-						<!-- languages -->
+						<section>
+							<h3>Proficient</h3>
+							{{{jsonToUl languages.proficient}}}
+						</section>
+						<section>
+							<h3>Familiar</h3>
+							{{{jsonToUl languages.familiar}}}
+						</section>
 					</section>
 					<section id="education">
 						<h2>Education</h2>
-						<!-- education -->
+						<section>
+							<h4>{{education.title}}</h4>
+							<p>{{{textToHTML education.text}}}</p>
+						</section>
 					</section>
 					<span id="references">
 						References available upon request
@@ -39,15 +60,37 @@
 				<div id="main-content">
 					<section id="about-me">
 						<h2>About Me</h2>
-						<!-- about_me -->
+						<p>{{about_me}}</p>
 					</section>
 					<section id="experience">
 						<h2>Work Experience</h2>
-						<!-- experience -->
+						{{#each experience}}
+						<section>
+							<h3>
+								{{company}}
+								<span class="location-date">
+									{{location}} ({{date_start}} - {{date_end}})
+								</span>
+							</h3>
+							{{{jsonToUl bullets}}}
+						</section>
+						{{/each}}
 					</section>
 					<section id="projects">
 						<h2>Personal Projects</h2>
-						<!-- projects -->
+						{{#each projects}}
+						<section>
+							<h3>
+								{{{linkText link title}}}
+								<span class="github-link">
+									<a href={{github}}>
+										View Source
+									</a>
+								</span>
+							</h3>
+							{{{jsonToUl bullets}}}
+						</section>
+						{{/each}}
 					</section>
 				</div>
 			</div>

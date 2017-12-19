@@ -1,8 +1,9 @@
 var fs = require("fs");
 var path = require("path")
 var child_process = require("child_process");
+var Handlebars = require("handlebars");
 
-var config_file = "config.json"
+var config_file = "config.json";
 
 // Default config values
 var config = {};
@@ -22,8 +23,7 @@ if (!fs.existsSync(build_directory)) {
 }
 
 function textToHTML(text) {
-	text = text.replace(/\n/g, "<br>");
-	return text;
+	return text ? text.replace(/\n/g, "<br>") : text;
 }
 
 function jsonToUl(data) {
@@ -39,6 +39,12 @@ function jsonToUl(data) {
 	}
 	return `<ul>\n${lines.join("\n")}\n</ul>`;
 }
+
+Handlebars.registerHelper("textToHTML", textToHTML);
+Handlebars.registerHelper("linkText", function(link, text) {
+	return link ? `<a href="${link}">${text}</a>` : textToHTML(text);
+});
+Handlebars.registerHelper("jsonToUl", jsonToUl);
 
 function copyRecursive(src, dest) {
 	if (fs.existsSync(src) && fs.statSync(src).isDirectory()) {
@@ -77,143 +83,26 @@ function fixCSS(text) {
 	return text;
 }
 
-
-function jobToHTML(job) {
-	return `
-		<section>
-			<h3>
-				${job.company}
-				<span class="location-date">
-					${job.location} (${job.date_start} - ${job.date_end})
-				</span>
-			</h3>
-			${jsonToUl(job.bullets)}
-		</section>`;
-}
-
-function projectToHTML(project) {
-	var title = project.link ? `<a href="${project.link}">${project.title}</a>` : project.title;
-	return `
-		<section>
-			<h3>
-				${title}
-				<span class="github-link">
-					<a href=${project.github}>
-						View Source
-					</a>
-				</span>
-			</h3>
-			${jsonToUl(project.bullets)}
-		</section>`;
-}
-
-function iconLinkToHTML(icon_link) {
-	var text = icon_link.link ? `<a href="${icon_link.link}">${icon_link.text}</a>` : textToHTML(icon_link.text);
-	return `
-		<tr>
-			<td>
-				<img class="icon" src="images/${icon_link.icon}">
-			</td>
-			<td>
-				${text}
-			</td>
-		</tr>`;
-}
-
-
-// Just inserting these as strings because it isn't worth loading js-dom
-function addExperience(text, jobs, config) {
-	jobs_text = "";
-	if (config.experience) {
-		var new_jobs = [];
-		config.experience.forEach(company => {
-			var job = jobs.find(job => job.company.toLowerCase() === company.toLowerCase());
-			if (job) {
-				new_jobs.push(job);
-			}
-			else {
-				console.log(`couldn't find company: ${company}`);
-			}
-		});
-		jobs = new_jobs;
-	}
-
-	jobs.forEach(job => {
-		jobs_text += jobToHTML(job)
-	});
-	return text.replace("<!-- experience -->", jobs_text);
-}
-
-function addProjects(text, projects, config) {
-	projects_text = "";
-	if (config.projects) {
-		var new_projects = [];
-		config.projects.forEach(title => {
-			var project = projects.find(project => project.title.toLowerCase() === title.toLowerCase());
-			if (project) {
-				new_projects.push(project);
-			}
-			else {
-				console.log(`couldn't find project: ${title}`);
-			}
-		});
-		projects = new_projects;
-	}
-
-	projects.forEach(project => {
-		projects_text += projectToHTML(project)
-	});
-	return text.replace("<!-- projects -->", projects_text);
-}
-
-function addIconLinks(text, icon_links) {
-	icon_links_text = "<table>";
-	icon_links.forEach(icon_link => {
-		icon_links_text += iconLinkToHTML(icon_link)
-	});
-	icon_links_text += "</table>"
-	return text.replace("<!-- icon_links -->", icon_links_text);
-}
-
-function addLanguages(text, languages) {
-	var lang_text = `
-		<section>
-			<h3>Proficient</h3>
-			${jsonToUl(languages.proficient)}
-		</section>
-		<section>
-			<h3>Familiar</h3>
-			${jsonToUl(languages.familiar)}
-		</section>`;
-	return text.replace("<!-- languages -->", lang_text);
-}
-
-function addEducation(text, education) {
-	var education_text = `
-		<section>
-			<h4>${education.title}</h4>
-			<p>${textToHTML(education.text)}</p>
-		</section>`;
-	return text.replace("<!-- education -->", education_text);
-}
-
-function addAboutMe(text, about_me) {
-	return text.replace("<!-- about_me -->", `<p>${about_me}</p>`);
-}
-
 // Load resume json data
 var resume_json = JSON.parse(fs.readFileSync("resume.json", "utf8"));
+
+if (config.projects) {
+	resume_json.projects = config.projects.map(name => {
+		return resume_json.projects.find(project => project.title.toLowerCase() === name.toLowerCase());
+	});
+}
+if (config.experience) {
+	resume_json.experience = config.experience.map(name => {
+		return resume_json.experience.find(job => job.company.toLowerCase() === name.toLowerCase());
+	});
+}
 
 // Copy over all relevant files
 
 // resume.html
-var html = fs.readFileSync("resume.html", "utf8");
-html = addExperience(html, resume_json.experience, config);
-html = addProjects(html, resume_json.projects, config);
-html = addIconLinks(html, resume_json.icon_links);
-html = addLanguages(html, resume_json.languages);
-html = addEducation(html, resume_json.education);
-html = addAboutMe(html, resume_json.about_me);
+var template = fs.readFileSync("resume.handlebars", "utf8");
+template = Handlebars.compile(template);
+var html = template(resume_json);
 fs.writeFileSync(`${build_directory}/resume.html`, html);
 
 // style.css

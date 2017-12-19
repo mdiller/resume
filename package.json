@@ -1,0 +1,14 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "main": "build.js",
+  "author": "Malcolm Diller",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdiller/resume.git"
+  }
+}
