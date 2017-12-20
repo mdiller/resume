@@ -36,18 +36,8 @@ h1 {
 	font-size: 14px;
 }
 
-#icon-links table {
-	margin-top: 15px;
-}
-
-#icon-links td {
+table td {
 	vertical-align: top;
-	color: #AAAAAA;
-}
-
-#icon-links a {
-	vertical-align: middle;
-	line-height: 24px;
 }
 
 table svg {
@@ -56,7 +46,5 @@ table svg {
 	width: 24px;
 	margin-right: 8px;
 	margin-bottom: 5px;
-	-webkit-filter: invert(100%);
-	filter: invert(100%);
 	fill: black;
 }

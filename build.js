@@ -46,7 +46,11 @@ Handlebars.registerHelper("linkText", function(link, text) {
 	return link ? `<a href="${link}">${text}</a>` : textToHTML(text);
 });
 Handlebars.registerHelper("simpleLink", function() {
-	return (this.link && this.link.startsWith("http")) ? this.link : this.text;
+	var text = (this.link && this.link.startsWith("http")) ? this.link : this.text;
+	if (this.link && (this.link.startsWith("http") || this.link.includes("@"))) {
+		text = `<a href="">${text}</a>`;
+	}
+	return text;
 })
 Handlebars.registerHelper("getSVG", function(filename) {
 	if (filename.endsWith("png")) {
