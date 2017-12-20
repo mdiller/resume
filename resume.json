@@ -52,7 +52,7 @@
 		},
 		{
 			"name": "address",
-			"text": "12240 NW Barnes Rd\nPortland, OR\nApt. 30\n97229",
+			"text": "12240 NW Barnes Rd #30\nPortland, OR\n97229",
 			"link": null,
 			"icon": "map_pin.svg"
 		}
