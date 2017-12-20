@@ -1,7 +1,8 @@
 var fs = require("fs");
 var path = require("path")
 var child_process = require("child_process");
-var Handlebars = require("handlebars");
+var Handlebars = require("handlebars")
+var wkhtmltopdf = require("wkhtmltopdf");;
 
 var config_file = "config.json";
 
@@ -110,6 +111,17 @@ if (config.experience) {
 	});
 }
 
+//-B 0 -L 0 -R 0 -T 0 --disable-javascript --page-width 8.5in --page-height 11in 
+var options = {
+	B: 0,
+	L: 0,
+	R: 0,
+	T: 0,
+	disableJavascript: true,
+	pageWidth: "8.5in",
+	pageHeight: "11in"
+};
+
 // Copy over all relevant files
 
 // resume.html
@@ -120,6 +132,7 @@ var template = fs.readFileSync("resume.handlebars", "utf8");
 template = Handlebars.compile(template);
 var html = template(resume_json);
 fs.writeFileSync(`${build_directory}/resume.html`, html);
+wkhtmltopdf(html, options).pipe(fs.createWriteStream(`${build_directory}/resume.pdf`));
 
 // resume_simple.html
 css = fs.readFileSync("resume_simple.css", "utf8");
@@ -129,6 +142,7 @@ template = fs.readFileSync("resume_simple.handlebars", "utf8");
 template = Handlebars.compile(template);
 html = template(resume_json);
 fs.writeFileSync(`${build_directory}/resume_simple.html`, html);
+wkhtmltopdf(html, options).pipe(fs.createWriteStream(`${build_directory}/resume_simple.pdf`));
 
 
 // resume.json
@@ -138,36 +152,9 @@ fs.writeFileSync(`${build_directory}/resume.json`, text);
 // Image directory
 copyRecursive("images", `${build_directory}/images`);
 
-function finish_build() {
-	if (config.build_dir) {
-		copyRecursive(build_directory, config.build_dir);
-	}
-	console.log("done!");
-}
 
-if (config.build_pdf == undefined || config.build_pdf) {
-	// Build the html and css as a pdf
-	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --disable-javascript --page-width 8.5in --page-height 11in ${build_directory}/resume.html ${build_directory}/resume.pdf`, (err, stdout, stderr) => {
-		if (err) {
-			console.log("There was a problem running wkhtmltopdf. Make sure you have it installed");
-			return;
-		}
-		if (stdout != "") {
-			console.log(stdout);
-		}
-		// finish_build();
-	});
-	child_process.exec(`wkhtmltopdf -B 0 -L 0 -R 0 -T 0 --disable-javascript --page-width 8.5in --page-height 11in ${build_directory}/resume_simple.html ${build_directory}/resume_simple.pdf`, (err, stdout, stderr) => {
-		if (err) {
-			console.log("There was a problem running wkhtmltopdf. Make sure you have it installed");
-			return;
-		}
-		if (stdout != "") {
-			console.log(stdout);
-		}
-		// finish_build();
-	});
+
+if (config.build_dir) {
+	copyRecursive(build_directory, config.build_dir);
 }
-else {
-	// finish_build();
-}
+console.log("done!");
