@@ -99,13 +99,13 @@ section > section {
 	line-height: 24px;
 }
 
-#icon-links img {
+#icon-links svg {
 	vertical-align: top;
 	height: 24px;
 	width: 24px;
 	margin-right: 8px;
 	margin-bottom: 5px;
-	color: white;
+	fill: white;
 }
 
 #education h4 {

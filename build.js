@@ -48,6 +48,12 @@ Handlebars.registerHelper("linkText", function(link, text) {
 Handlebars.registerHelper("simpleLink", function() {
 	return (this.link && this.link.startsWith("http")) ? this.link : this.text;
 })
+Handlebars.registerHelper("getSVG", function(filename) {
+	if (filename.endsWith("png")) {
+		return "<svg></svg>";
+	}
+	return fs.readFileSync(`images/${filename}`, "utf8")
+});
 
 function copyRecursive(src, dest) {
 	if (fs.existsSync(src) && fs.statSync(src).isDirectory()) {

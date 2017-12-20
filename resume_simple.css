@@ -50,7 +50,7 @@ h1 {
 	line-height: 24px;
 }
 
-table img {
+table svg {
 	vertical-align: top;
 	height: 24px;
 	width: 24px;
@@ -58,5 +58,5 @@ table img {
 	margin-bottom: 5px;
 	-webkit-filter: invert(100%);
 	filter: invert(100%);
-	color: black;
+	fill: black;
 }

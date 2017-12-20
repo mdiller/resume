@@ -24,37 +24,37 @@
 			"name": "website",
 			"text": "dillerm.io",
 			"link": "http://dillerm.io",
-			"icon": "globe.png"
+			"icon": "globe.svg"
 		},
 		{
 			"name": "github",
 			"text": "@mdiller",
 			"link": "https://github.com/mdiller",
-			"icon": "github.png"
+			"icon": "github.svg"
 		},
 		{
 			"name": "phone",
 			"text": "(503)-686-8379",
 			"link": "tel://1-503-686-8379",
-			"icon": "phone.png"
+			"icon": "phone.svg"
 		},
 		{
 			"name": "email",
 			"text": "malcolm@dillerm.io",
 			"link": "mailto:malcolm@dillerm.io",
-			"icon": "email.png"
+			"icon": "email.svg"
 		},
 		{
 			"name": "linkedin",
 			"text": "Malcolm Diller",
 			"link": "https://www.linkedin.com/in/malcolm-diller-28b040a5/",
-			"icon": "linkedin.png"
+			"icon": "linkedin.svg"
 		},
 		{
 			"name": "address",
 			"text": "12240 NW Barnes Rd\nPortland, OR\nApt. 30\n97229",
 			"link": null,
-			"icon": "map_pin.png"
+			"icon": "map_pin.svg"
 		}
 	],
 	"experience": [
