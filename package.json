@@ -6,6 +6,7 @@
   "license": "ISC",
   "dependencies": {
     "handlebars": "^4.0.11",
+    "pdf-merge": "^1.0.2",
     "wkhtmltopdf": "^0.3.4"
   },
   "repository": {

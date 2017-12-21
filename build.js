@@ -2,7 +2,9 @@ var fs = require("fs");
 var path = require("path")
 var child_process = require("child_process");
 var Handlebars = require("handlebars")
-var wkhtmltopdf = require("wkhtmltopdf");;
+var wkhtmltopdf = require("wkhtmltopdf");
+var PDFMerge = require("pdf-merge");
+var async = require("async");
 
 var config_file = "config.json";
 
@@ -111,7 +113,6 @@ if (config.experience) {
 	});
 }
 
-//-B 0 -L 0 -R 0 -T 0 --disable-javascript --page-width 8.5in --page-height 11in 
 var options = {
 	B: 0,
 	L: 0,
@@ -119,7 +120,8 @@ var options = {
 	T: 0,
 	disableJavascript: true,
 	pageWidth: "8.5in",
-	pageHeight: "11in"
+	pageHeight: "11in",
+	output: `${build_directory}/resume_simple.pdf`
 };
 
 // Copy over all relevant files
@@ -132,17 +134,15 @@ var template = fs.readFileSync("resume.handlebars", "utf8");
 template = Handlebars.compile(template);
 var html = template(resume_json);
 fs.writeFileSync(`${build_directory}/resume.html`, html);
-wkhtmltopdf(html, options).pipe(fs.createWriteStream(`${build_directory}/resume.pdf`));
 
 // resume_simple.html
 css = fs.readFileSync("resume_simple.css", "utf8");
 resume_json.style = `<style>${fixCSS(css)}</style>`;
 
-template = fs.readFileSync("resume_simple.handlebars", "utf8");
+var template = fs.readFileSync("resume_simple.handlebars", "utf8");
 template = Handlebars.compile(template);
-html = template(resume_json);
-fs.writeFileSync(`${build_directory}/resume_simple.html`, html);
-wkhtmltopdf(html, options).pipe(fs.createWriteStream(`${build_directory}/resume_simple.pdf`));
+var html_simple = template(resume_json);
+fs.writeFileSync(`${build_directory}/resume_simple.html`, html_simple);
 
 
 // resume.json
@@ -152,9 +152,34 @@ fs.writeFileSync(`${build_directory}/resume.json`, text);
 // Image directory
 copyRecursive("images", `${build_directory}/images`);
 
-
-
-if (config.build_dir) {
-	copyRecursive(build_directory, config.build_dir);
+function finish() {
+	// Copy all the files to other directory
+	if (config.build_dir) {
+		copyRecursive(build_directory, config.build_dir);
+	}
+	console.log("done!");
 }
-console.log("done!");
+
+// Generate pdfs and finish
+async.series([
+	callback => {
+		options.output = `${build_directory}/resume.pdf`;
+		wkhtmltopdf(html, options, function (err, stream) {
+			callback();
+		});
+	},
+	callback => {
+		options.output = `${build_directory}/resume_simple.pdf`;
+		wkhtmltopdf(html_simple, options, function (err, stream) {
+			callback();
+		});
+	},
+	callback => {
+		PDFMerge([
+			`${build_directory}/resume.pdf`,
+			`${build_directory}/resume_simple.pdf`
+		], {output: `${build_directory}/resume_combined.pdf`}).then(buffer => {
+			callback();
+		});
+	}
+], finish);
