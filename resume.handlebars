@@ -48,7 +48,10 @@
 						<h2>Education</h2>
 						<section>
 							<h4>{{education.title}}</h4>
-							<p>{{{textToHTML education.text}}}</p>
+							<p>
+								{{{textToHTML education.text}}}<br>
+								GPA: {{education.gpa}}
+							</p>
 						</section>
 					</section>
 					<span id="references">
@@ -58,7 +61,6 @@
 
 				<div id="main-content">
 					<section id="about-me">
-						<h2>About Me</h2>
 						<p>{{about_me}}</p>
 					</section>
 					<section id="experience">

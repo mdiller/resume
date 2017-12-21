@@ -12,26 +12,29 @@
 	<body>
 		<div id="document">
 			<h1>Malcolm Diller</h1>
-			<h2>About Me</h2>
-			<p>{{about_me}}</p>
+			<div id="contact-info" class="icon-links">
+				{{#each icon_links_contact}}
+				<div>
+					<span>
+						{{{simpleLink}}}
+					</span>
+				</div>
+				{{/each}}
+			</div>
+			<p id="about-me">
+				{{about_me}}
+			</p>
 			<table class="double-table">
 				<tr>
-					<td width="60%">
-						<h2>Contact Info</h2>
-						<table id="icon-links">
-							{{#each icon_links}}
-							<tr>
-								<td>
-									{{{getSVG icon}}}
-								</td>
-								<td>
-									{{{simpleLink}}}
-								</td>
-							</tr>
-							{{/each}}
-						</table>
+					<td width="70%">
+						<h2>Education</h2>
+						<h4>{{education.title}}</h4>
+						<p>
+							{{{textToHTML education.text}}}<br>
+							GPA: {{education.gpa}}
+						</p>
 					</td>
-					<td width="40%">
+					<td width="30%">
 						<h2>Languages</h2>
 						<h3>Proficient</h3>
 						{{{jsonToUl languages.proficient}}}
@@ -50,14 +53,26 @@
 				</h3>
 				{{{jsonToUl bullets}}}
 			{{/each}}
-		
-			<h2>Education</h2>
-			<h4>{{education.title}}</h4>
-			<p>{{{textToHTML education.text}}}</p>
-
-			<div id="references">
-				References available upon request
-			</div>
+			<br>
+			<table id="web-info" class="icon-links">
+				<tr>
+					<td></td>
+					<td></td>
+					<td id="references" rowspan="4">
+						References available upon request
+					</td>
+				</tr>
+				{{#each icon_links_web}}
+				<tr>
+					<td>
+						{{{getSVG icon}}}
+					</td>
+					<td>
+						{{{simpleLink}}}
+					</td>
+				</tr>
+				{{/each}}
+			</table>
 		</div>
 	</body>
 </html>

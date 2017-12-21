@@ -113,6 +113,14 @@ if (config.experience) {
 	});
 }
 
+resume_json.icon_links_contact = [ "address", "email", "phone" ].map(name => {
+	return resume_json.icon_links.find(link => link.name === name);
+});
+
+resume_json.icon_links_web = [ "website", "github", "linkedin" ].map(name => {
+	return resume_json.icon_links.find(link => link.name === name);
+});
+
 var options = {
 	B: 0,
 	L: 0,

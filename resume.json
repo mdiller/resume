@@ -1,16 +1,17 @@
 {
-	"about_me": "I enjoy working on complex problems and creating elegant solutions for them. Not only am I a fast learner, I take it upon myself to learn new concepts and work on personal projects in order to expand my knowledge.",
+	"about_me": "I am seeking a professional environment where I can make substantial contributions. I enjoy working on complex problems and creating elegant solutions. I am fast learner, and take it upon myself to learn new concepts and work on personal projects in order to expand my knowledge.",
 	"education": {
 		"title": "Oregon State University",
 		"date_start": "2013",
 		"date_end": "2017",
-		"text": "B.S. in Computer Science\nGraduated December 8th, 2017"
+		"text": "B.S. in Computer Science\nGraduated December 8th, 2017",
+		"gpa": 3.43
 	},
 	"languages": {
 		"proficient": [
+			"JavaScript",
 			"Python",
 			"C#",
-			"JavaScript",
 			"SQL",
 			"HTML/CSS"
 		],
