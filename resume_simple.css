@@ -75,3 +75,7 @@ ul {
 #references {
 	text-align: right;
 }
+
+a:visited {
+	color: #0000EE;
+}
