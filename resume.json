@@ -139,7 +139,9 @@
 			"bullets": [
 				"A 3D rendering of the Earth, using a relatively small number of polygons",
 				"Rendered using THREE.js / WebGL, and made to work on mobile and desktop",
-				"Built using elevation data from the Google Maps API"
+				"Built using elevation data from the Google Maps API",
+				"Easily configurable from a pop-out menu",
+				"Bundled via Webpack"
 			]
 		},
 		{
