@@ -23,8 +23,8 @@ GPA: {{education.gpa}}
 ## Work Experience
 {{#each experience}}
 ## {{company}}
-{{location}} 
-({{date_start}} - {{date_end}})
+{{location}}
+{{dateFormat date_start}} - {{dateFormat date_end}}
 
 {{description}}
 
@@ -48,5 +48,5 @@ GPA: {{education.gpa}}
 
 
 {{#each icon_links_web}}
-{{{simpleLinkMD text link}}}
+{{{simpleLinkMD text link}}}	
 {{/each}}
