@@ -1,0 +1,52 @@
+# Malcolm Diller
+{{#each icon_links_contact}}
+{{{simpleLinkMD text link}}}
+{{/each}}
+
+
+{{about_me}}
+
+## Education
+{{education.title}}
+{{education.text}}
+GPA: {{education.gpa}}
+
+
+## Languages
+### Proficient
+{{{jsonToListMD languages.proficient}}}
+
+### Familiar
+{{{jsonToListMD languages.familiar}}}
+
+
+## Work Experience
+{{#each experience}}
+## {{company}}
+{{location}} 
+({{date_start}} - {{date_end}})
+
+{{description}}
+
+{{{jsonToListMD bullets}}}
+
+
+{{/each}}
+
+
+
+## Personal Projects
+{{#each projects}}
+## {{title}}
+
+{{description}}
+
+{{{jsonToListMD bullets}}}
+
+
+{{/each}}
+
+
+{{#each icon_links_web}}
+{{{simpleLinkMD text link}}}
+{{/each}}

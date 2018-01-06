@@ -26,11 +26,16 @@ if (!fs.existsSync(build_directory)) {
 }
 
 function textToHTML(text) {
-	return text ? text.replace(/\n/g, "<br>") : text;
+	if (!text) {
+		return text;
+	}
+	text = text.replace(/\n/g, "<br>");
+	text = text.replace(/\[([^\]]*)\]\(([^\)]*)\)/g, `<a href="$2">$1</a>`);
+	return text;
 }
 
 function jsonToUl(data) {
-	var lines = []
+	var lines = [];
 	for(var i = 0; i < data.length; i++) {
 		if ((i + 1) < data.length && typeof data[i + 1] !== "string"){
 			lines.push(`<li>${data[i]}\n${jsonToUl(data[i + 1])}</li>`);
@@ -43,18 +48,43 @@ function jsonToUl(data) {
 	return `<ul>\n${lines.join("\n")}\n</ul>`;
 }
 
+function jsonToListMD(data, depth=0) {
+	var lines = [];
+	var indent = "\t".repeat(depth);
+	for(var i = 0; i < data.length; i++) {
+		if ((i + 1) < data.length && typeof data[i + 1] !== "string"){
+			lines.push(`${indent}- ${data[i]}\n${jsonToListMD(data[i + 1], depth + 1)}`);
+			i += 1;
+		}
+		else {
+			lines.push(`${indent}- ${data[i]}`);
+		}
+	}
+	return `${lines.join("\n")}`;
+}
+
+function simpleLinkMD(text, link) {
+	var text = (link && link.startsWith("http")) ? link : text;
+	if (link && (link.startsWith("http") || link.includes("@"))) {
+		text = `[${text}](${link})`;
+	}
+	return text;
+}
+
+function simpleLink(text, link) {
+	text = simpleLinkMD(text, link)
+	text = text.replace(/\n/g, " ");
+	return textToHTML(text);
+}
+
 Handlebars.registerHelper("textToHTML", textToHTML);
 Handlebars.registerHelper("jsonToUl", jsonToUl);
+Handlebars.registerHelper("jsonToListMD", data => jsonToListMD(data)); // do this so no extra arguments get passed
+Handlebars.registerHelper("simpleLink", simpleLink);
+Handlebars.registerHelper("simpleLinkMD", simpleLinkMD);
 Handlebars.registerHelper("linkText", function(link, text) {
 	return link ? `<a href="${link}">${text}</a>` : textToHTML(text);
 });
-Handlebars.registerHelper("simpleLink", function() {
-	var text = (this.link && this.link.startsWith("http")) ? this.link : this.text;
-	if (this.link && (this.link.startsWith("http") || this.link.includes("@"))) {
-		text = `<a href="">${text}</a>`;
-	}
-	return text;
-})
 Handlebars.registerHelper("getSVG", function(filename) {
 	if (filename.endsWith("png")) {
 		return "<svg></svg>";
@@ -152,6 +182,11 @@ template = Handlebars.compile(template);
 var html_simple = template(resume_json);
 fs.writeFileSync(`${build_directory}/resume_simple.html`, html_simple);
 
+// resume.md
+var template = fs.readFileSync("resume_markdown.handlebars", "utf8");
+template = Handlebars.compile(template);
+var markdown_text = template(resume_json);
+fs.writeFileSync(`${build_directory}/resume.md`, markdown_text);
 
 // resume.json
 var text = fs.readFileSync("resume.json", "utf8");
