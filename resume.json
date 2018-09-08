@@ -60,6 +60,21 @@
 	],
 	"experience": [
 		{
+			"id": 5,
+			"company": "Biotronik / MSEI",
+			"location": "Lake Oswego, Oregon",
+			"date_start": "March 2018",
+			"date_end": "Present",
+			"bullets": [
+				"Design mobile applications which communicate with implantable devices",
+				[
+					"Written in C# using Xamarin"
+				]
+			],
+			"description": "I am currently working on designing mobile applications which communicate with implantable devices."
+		},
+		{
+			"id": 4,
 			"company": "Steelcase",
 			"location": "Portland, Oregon",
 			"date_start": "July 2016",
@@ -76,6 +91,7 @@
 			"description": "I developed a customizable firmware testing system which took advantage of the HIL (Hardware In The Loop) technique, and was comprised of an emulator and a controller. The controller was written in C#.NET and communicated with the emulator via a CAN serial bus, using a custom protocol. The emulator was written in C, and was responsible for emulating various configurable inputs and outputs for the device under test. I gained incredible experience, worked with great people, and very much enjoyed working in a friendly and open work environment."
 		},
 		{
+			"id": 3,
 			"company": "Biotronik / MSEI",
 			"location": "Lake Oswego, Oregon",
 			"date_start": "March 2015",
@@ -92,6 +108,7 @@
 			"description": "I was working with the SEMD-IV team, and worked on a compilation of tools used during their development cycle. This involved a test management system, a review management system, and an application that ties these types of systems together. The code was written in C# .NET with a UI implemented using WPF. The back-end communication and the server involved HTTP, SQL Server, and ADO.NET Entity framework. It was an extremely rewarding and educational experience in a professional environment with very helpful people."
 		},
 		{
+			"id": 2,
 			"company": "Metratek (for Welch Allyn)",
 			"location": "Beaverton, Oregon",
 			"date_start": "June 2014",
@@ -104,6 +121,7 @@
 			"description": "I was assigned to Welch Allyn, where I developed code to run production tests on a new ECG Unit. The code was written in a C# .NET environment, and we used Team Foundation Server for version control. This code communicates with several different instruments over USB, GPIB and Ethernet. I took part in various code reviews and planning meetings, and created unit tests and descriptions for each part of the test code I wrote."
 		},
 		{
+			"id": 1,
 			"company": "Metratek (for Radar Engineers)",
 			"location": "Portland, Oregon",
 			"date_start": "June 2012",

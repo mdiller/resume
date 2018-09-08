@@ -92,6 +92,9 @@ Handlebars.registerHelper("getSVG", function(filename) {
 	return fs.readFileSync(`images/${filename}`, "utf8")
 });
 Handlebars.registerHelper("dateFormat", function(datestring) {
+	if (datestring == "Present") {
+		return datestring;
+	}
 	var date = new Date(datestring);
 	return `${date.toLocaleString("en-us", { month: "long" })}(${date.getMonth() + 1}) ${date.getFullYear()}`
 });
@@ -142,8 +145,8 @@ if (config.projects) {
 	});
 }
 if (config.experience) {
-	resume_json.experience = config.experience.map(name => {
-		return resume_json.experience.find(job => job.company.toLowerCase() === name.toLowerCase());
+	resume_json.experience = config.experience.map(id => {
+		return resume_json.experience.find(job => job.id === id);
 	});
 }
 
