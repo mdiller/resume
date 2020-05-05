@@ -9,9 +9,9 @@
 	},
 	"languages": {
 		"proficient": [
-			"JavaScript",
 			"Python",
 			"C#",
+			"JavaScript",
 			"SQL",
 			"HTML/CSS"
 		],
@@ -32,6 +32,12 @@
 			"text": "@mdiller",
 			"link": "https://github.com/mdiller",
 			"icon": "github.svg"
+		},
+		{
+			"name": "sourcerer",
+			"text": "@mdiller",
+			"link": "https://sourcerer.io/mdiller",
+			"icon": "sourcerer.svg"		
 		},
 		{
 			"name": "phone",
