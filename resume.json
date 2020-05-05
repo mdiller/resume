@@ -53,7 +53,7 @@
 		},
 		{
 			"name": "address",
-			"text": "12240 NW Barnes Rd #30\nPortland, OR\n97229",
+			"text": "Not\nCurrently\nSpecified",
 			"link": null,
 			"icon": "map_pin.svg"
 		}
@@ -153,7 +153,7 @@
 		{
 			"title": "Low-Poly Earth",
 			"github": "https://github.com/mdiller/lowpoly-earth",
-			"link": "http://dillerm.io/lowpoly-earth/",
+			"link": "http://dillerm.io/apps/lowpoly-earth/",
 			"bullets": [
 				"A 3D rendering of the Earth, using a relatively small number of polygons",
 				"Rendered using THREE.js / WebGL, and made to work on mobile and desktop",
@@ -188,7 +188,7 @@
 		},
 		{
 			"title": "Dotabase (Website)",
-			"github": "https://github.com/mdiller/dotabase",
+			"github": "https://github.com/mdiller/dotabase-web",
 			"link": "http://dotabase.dillerm.io",
 			"bullets": [
 				"A website built on dotabase, to showcase its functionality",
